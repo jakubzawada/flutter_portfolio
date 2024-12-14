@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/widgets/project_container.dart';
+import 'package:flutter_portfolio/widgets/narrow_project_container.dart';
 
-class MyProjectsInfo extends StatelessWidget {
-  const MyProjectsInfo({super.key});
+class NarrowMyProjectsInfo extends StatelessWidget {
+  const NarrowMyProjectsInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 50, left: 200.0, right: 60),
+      padding: EdgeInsets.only(top: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -16,7 +16,7 @@ class MyProjectsInfo extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
           ),
           SizedBox(height: 80),
-          ProjectContainer(
+          NarrowProjectContainer(
             title: 'DropCheck',
             image: 'images/dropcheck.png',
             description: [
@@ -30,7 +30,7 @@ class MyProjectsInfo extends StatelessWidget {
             ],
           ),
           SizedBox(height: 50),
-          ProjectContainer(
+          NarrowProjectContainer(
             title: 'ThisIsYourTraining',
             image: 'images/ThisIsYourTraining.png',
             description: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/widgets/about_me_info.dart';
-import 'package:flutter_portfolio/widgets/my_projects_info.dart';
+import 'package:flutter_portfolio/widgets/narrow_my_project_info.dart';
 
 class NarrowHomePage extends StatelessWidget {
   const NarrowHomePage({
@@ -15,7 +15,13 @@ class NarrowHomePage extends StatelessWidget {
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('LOGO'),
+            Text(
+              'JZ',
+              style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
             Icon(Icons.menu),
           ],
         ),
@@ -29,7 +35,7 @@ class NarrowHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 50, left: 100.0, right: 60),
+                padding: EdgeInsets.only(top: 50),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -37,12 +43,15 @@ class NarrowHomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                width: 300,
-                height: 300,
-                child: Placeholder(),
+              Padding(
+                padding: EdgeInsets.only(top: 40, left: 80),
+                child: Image(
+                  image: AssetImage('images/ThisIsYourTraining.png'),
+                  width: 300,
+                  height: 300,
+                ),
               ),
-              MyProjectsInfo(),
+              NarrowMyProjectsInfo(),
             ],
           ),
         ),

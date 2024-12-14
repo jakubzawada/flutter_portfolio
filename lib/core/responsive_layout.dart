@@ -28,6 +28,3 @@ class ResponsiveLayout extends StatelessWidget {
     );
   }
 }
-///// 1200+ ultrawide
-/// 1200-600 wide
-/// 600-narrow

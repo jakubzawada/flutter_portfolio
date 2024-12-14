@@ -8,37 +8,51 @@ class UltraWideHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                   Padding(
-                    padding: EdgeInsets.only(top: 200, left: 200.0, right: 220),
+                    padding: const EdgeInsets.only(
+                        top: 200, left: 200.0, right: 220),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AboutMeInfo(),
-                        SizedBox(
-                          width: 350,
-                          height: 350,
-                          child: Placeholder(),
-                        )
+                        const AboutMeInfo(),
+                        // Dynamiczny rozmiar obrazu
+                        Flexible(
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              // Oblicz proporcję obrazu względem szerokości
+                              double imageSize = constraints.maxWidth *
+                                  0.6; // Większy procent szerokości
+                              imageSize = imageSize.clamp(
+                                  250, 500); // Większy zakres rozmiarów
+                              return Image(
+                                image: const AssetImage(
+                                    'images/ThisIsYourTraining.png'),
+                                width: imageSize,
+                                height: imageSize,
+                              );
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 300),
-                  MyProjectsInfo(),
+                  const SizedBox(height: 300),
+                  const MyProjectsInfo(),
                 ],
               ),
             ),
           ),
-          TopNavBar(),
+          const TopNavBar(),
         ],
       ),
     );

@@ -47,28 +47,40 @@ class AboutMeInfo extends StatelessWidget {
         const SizedBox(height: 40),
         Row(
           children: [
-            IconButton(
-              icon: const Icon(Icons.code),
-              iconSize: 30,
-              onPressed: () {},
+            InkWell(
+              onTap: () {},
+              child: const Image(
+                image: AssetImage('images/insta-logo.webp'),
+                width: 50,
+                height: 50,
+              ),
             ),
             const SizedBox(width: 10),
-            IconButton(
-              icon: const Icon(Icons.code),
-              iconSize: 30,
-              onPressed: () {},
+            InkWell(
+              onTap: () {},
+              child: const Image(
+                image: AssetImage('images/facebook_logo.png'),
+                width: 50,
+                height: 50,
+              ),
             ),
             const SizedBox(width: 10),
-            IconButton(
-              icon: const Icon(Icons.code),
-              iconSize: 30,
-              onPressed: () {},
+            InkWell(
+              onTap: () {},
+              child: const Image(
+                image: AssetImage('images/linkedin-logo.webp'),
+                width: 50,
+                height: 50,
+              ),
             ),
             const SizedBox(width: 10),
-            IconButton(
-              icon: const Icon(Icons.facebook),
-              iconSize: 30,
-              onPressed: () {},
+            InkWell(
+              onTap: () {},
+              child: const Image(
+                image: AssetImage('images/git-logo.png'),
+                width: 34,
+                height: 34,
+              ),
             ),
             const SizedBox(width: 10),
           ],

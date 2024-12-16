@@ -3,9 +3,11 @@ import 'package:flutter_portfolio/widgets/about_me_info.dart';
 import 'package:flutter_portfolio/widgets/narrow_my_project_info.dart';
 
 class NarrowHomePage extends StatelessWidget {
-  const NarrowHomePage({
+  NarrowHomePage({
     super.key,
   });
+
+  final GlobalKey myProjectsKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -22,28 +24,40 @@ class NarrowHomePage extends StatelessWidget {
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
             ),
-            Icon(Icons.menu),
+            InkWell(
+              child: Icon(
+                Icons.menu,
+              ),
+            ),
           ],
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 50),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AboutMeInfo(),
+                    AboutMeInfo(
+                      onSeeMyWorksPressed: () {
+                        Scrollable.ensureVisible(
+                          myProjectsKey.currentContext!,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 40, left: 80),
                 child: Image(
                   image: AssetImage('images/ThisIsYourTraining.png'),
@@ -51,7 +65,7 @@ class NarrowHomePage extends StatelessWidget {
                   height: 300,
                 ),
               ),
-              NarrowMyProjectsInfo(),
+              NarrowMyProjectsInfo(key: myProjectsKey),
             ],
           ),
         ),

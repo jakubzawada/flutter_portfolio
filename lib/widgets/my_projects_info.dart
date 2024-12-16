@@ -7,7 +7,7 @@ class MyProjectsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 50, left: 200.0, right: 60),
+      padding: EdgeInsets.only(top: 50, left: 100.0, right: 60),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,6 +19,8 @@ class MyProjectsInfo extends StatelessWidget {
           ProjectContainer(
             title: 'DropCheck',
             image: 'images/dropcheck.png',
+            projectUrl:
+                'https://play.google.com/store/apps/details?id=com.jakubzawada.drop_check',
             description: [
               'Dropcheck is an essential tool in the world of streetwear!',
               'Thanks to Dropcheck you will always be up to date:',
@@ -33,13 +35,27 @@ class MyProjectsInfo extends StatelessWidget {
           ProjectContainer(
             title: 'ThisIsYourTraining',
             image: 'images/ThisIsYourTraining.png',
+            projectUrl:
+                'https://play.google.com/store/apps/details?id=com.jakubzawada.this_is_your_training',
             description: [
               'Your one-stop tool for health, training and motivation!',
               'ThisIsYourTraining is an app designed for anyone who wants to achieve their workout goals, track progress and connect with other like-minded individuals.',
               'With our features, there\'s something for every user, from customized workout plans to daily activity tracking to community inspiration.',
             ],
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 50),
+          ProjectContainer(
+            title: 'YourWeather',
+            image: 'images/your-weather-icon2.png',
+            projectUrl: 'https://github.com/jakubzawada/your_weather',
+            description: [
+              'YourWeather: check the weather forecast for every day!',
+              'YourWeather is an app that allows you to check the exact weather in the ',
+              'city of your choice, no matter where you are. Simple, fast and reliable - ',
+              'ideal for people who want to be always prepared for any aura.',
+            ],
+          ),
+          SizedBox(height: 50),
         ],
       ),
     );

@@ -6,11 +6,12 @@ class NarrowMyProjectsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(top: 50),
+    return Padding(
+      padding: const EdgeInsets.only(top: 50),
       child: Column(
+        key: key,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           Text(
             'My Projects',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
@@ -19,6 +20,8 @@ class NarrowMyProjectsInfo extends StatelessWidget {
           NarrowProjectContainer(
             title: 'DropCheck',
             image: 'images/dropcheck.png',
+            projectUrl:
+                'https://play.google.com/store/apps/details?id=com.jakubzawada.drop_check',
             description: [
               'Dropcheck is an essential tool in the world of streetwear!',
               'Thanks to Dropcheck you will always be up to date:',
@@ -33,13 +36,27 @@ class NarrowMyProjectsInfo extends StatelessWidget {
           NarrowProjectContainer(
             title: 'ThisIsYourTraining',
             image: 'images/ThisIsYourTraining.png',
+            projectUrl:
+                'https://play.google.com/store/apps/details?id=com.jakubzawada.this_is_your_training',
             description: [
               'Your one-stop tool for health, training and motivation!',
               'ThisIsYourTraining is an app designed for anyone who wants to achieve their workout goals, track progress and connect with other like-minded individuals.',
               'With our features, there\'s something for every user, from customized workout plans to daily activity tracking to community inspiration.',
             ],
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 50),
+          NarrowProjectContainer(
+            title: 'YourWeather',
+            image: 'images/your-weather-icon2.png',
+            projectUrl: 'https://github.com/jakubzawada/your_weather',
+            description: [
+              'YourWeather: check the weather forecast for every day!',
+              'YourWeather is an app that allows you to check the exact weather in the ',
+              'city of your choice, no matter where you are. Simple, fast and reliable - ',
+              'ideal for people who want to be always prepared for any aura.',
+            ],
+          ),
+          SizedBox(height: 50),
         ],
       ),
     );

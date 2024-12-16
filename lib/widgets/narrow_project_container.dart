@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NarrowProjectContainer extends StatelessWidget {
   const NarrowProjectContainer({
@@ -6,11 +7,13 @@ class NarrowProjectContainer extends StatelessWidget {
     required this.title,
     required this.image,
     required this.description,
+    required this.projectUrl,
   });
 
   final String title;
   final String image;
   final List<String> description;
+  final String projectUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +43,18 @@ class NarrowProjectContainer extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 4),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Image(
-                  image: AssetImage(image),
-                  width: 240,
-                  height: 240,
-                ),
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 4),
+                borderRadius: BorderRadius.circular(4),
               ),
-            ],
+              child: Image(
+                image: AssetImage(image),
+                width: 240,
+                height: 240,
+              ),
+            ),
           ),
           const SizedBox(height: 30),
           Column(
@@ -74,38 +74,55 @@ class NarrowProjectContainer extends StatelessWidget {
             }).toList(),
           ),
           const SizedBox(height: 30),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'View Project',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: () async {
+                  if (await canLaunchUrl(Uri.parse(projectUrl))) {
+                    await launchUrl(
+                      Uri.parse(projectUrl),
+                      mode: LaunchMode.externalApplication,
+                    );
+                  } else {
+                    throw 'Could not launch $projectUrl';
+                  }
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 12.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'View Project',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.black,
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(width: 8),
-                Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

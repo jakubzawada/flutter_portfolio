@@ -4,7 +4,10 @@ import 'package:flutter_portfolio/widgets/my_projects_info.dart';
 import 'package:flutter_portfolio/widgets/top_nav_bar.dart';
 
 class UltraWideHomePage extends StatelessWidget {
-  const UltraWideHomePage({super.key});
+  UltraWideHomePage({super.key});
+
+  final ScrollController scrollController = ScrollController();
+  final GlobalKey myProjectsKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +15,7 @@ class UltraWideHomePage extends StatelessWidget {
       body: Stack(
         children: [
           SingleChildScrollView(
+            controller: scrollController,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -24,16 +28,20 @@ class UltraWideHomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const AboutMeInfo(),
-                        // Dynamiczny rozmiar obrazu
+                        AboutMeInfo(
+                          onSeeMyWorksPressed: () {
+                            Scrollable.ensureVisible(
+                              myProjectsKey.currentContext!,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            );
+                          },
+                        ),
                         Flexible(
                           child: LayoutBuilder(
                             builder: (context, constraints) {
-                              // Oblicz proporcję obrazu względem szerokości
-                              double imageSize = constraints.maxWidth *
-                                  0.6; // Większy procent szerokości
-                              imageSize = imageSize.clamp(
-                                  250, 500); // Większy zakres rozmiarów
+                              double imageSize = constraints.maxWidth * 0.6;
+                              imageSize = imageSize.clamp(250, 500);
                               return Image(
                                 image: const AssetImage(
                                     'images/ThisIsYourTraining.png'),
@@ -47,12 +55,31 @@ class UltraWideHomePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 300),
-                  const MyProjectsInfo(),
+                  Padding(
+                    key: myProjectsKey,
+                    padding: const EdgeInsets.only(left: 100, right: 150),
+                    child: const MyProjectsInfo(),
+                  ),
                 ],
               ),
             ),
           ),
-          const TopNavBar(),
+          TopNavBar(
+            onHomePressed: () {
+              scrollController.animateTo(
+                0,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            onMyProjectsPressed: () {
+              Scrollable.ensureVisible(
+                myProjectsKey.currentContext!,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+          ),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/app/home/pages/menu_page.dart';
 import 'package:flutter_portfolio/widgets/about_me_info.dart';
 import 'package:flutter_portfolio/widgets/narrow_my_project_info.dart';
 
@@ -14,10 +15,10 @@ class NarrowHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'JZ',
               style: TextStyle(
                   fontSize: 40,
@@ -25,9 +26,17 @@ class NarrowHomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             InkWell(
-              child: Icon(
+              child: const Icon(
                 Icons.menu,
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MenuPage(),
+                  ),
+                );
+              },
             ),
           ],
         ),

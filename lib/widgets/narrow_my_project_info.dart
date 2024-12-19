@@ -6,12 +6,11 @@ class NarrowMyProjectsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 50),
+    return const Padding(
+      padding: EdgeInsets.only(top: 50),
       child: Column(
-        key: key,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Text(
             'My Projects',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),

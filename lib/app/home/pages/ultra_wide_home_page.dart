@@ -7,7 +7,7 @@ class UltraWideHomePage extends StatelessWidget {
   UltraWideHomePage({super.key});
 
   final ScrollController scrollController = ScrollController();
-  final GlobalKey myProjectsKey = GlobalKey();
+  final GlobalKey ultraWideProjectsKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class UltraWideHomePage extends StatelessWidget {
                         AboutMeInfo(
                           onSeeMyWorksPressed: () {
                             Scrollable.ensureVisible(
-                              myProjectsKey.currentContext!,
+                              ultraWideProjectsKey.currentContext!,
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeInOut,
                             );
@@ -56,7 +56,7 @@ class UltraWideHomePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 300),
                   Padding(
-                    key: myProjectsKey,
+                    key: ultraWideProjectsKey,
                     padding: const EdgeInsets.only(left: 100, right: 150),
                     child: const MyProjectsInfo(),
                   ),
@@ -74,7 +74,7 @@ class UltraWideHomePage extends StatelessWidget {
             },
             onMyProjectsPressed: () {
               Scrollable.ensureVisible(
-                myProjectsKey.currentContext!,
+                ultraWideProjectsKey.currentContext!,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );

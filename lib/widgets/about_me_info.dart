@@ -52,7 +52,12 @@ class AboutMeInfo extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 40),
-        const MySocialMedia()
+        const MySocialMedia(
+          instaIconSize: 66,
+          facebookIconSize: 66,
+          linkedinIconSize: 66,
+          githubIconSize: 44,
+        )
       ],
     );
   }

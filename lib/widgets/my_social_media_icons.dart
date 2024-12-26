@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MySocialMedia extends StatelessWidget {
-  final double instaIconSize;
-  final double facebookIconSize;
-  final double linkedinIconSize;
-  final double githubIconSize;
-
-  const MySocialMedia({
+class MySocialMediaIcons extends StatelessWidget {
+  const MySocialMediaIcons({
     super.key,
-    this.instaIconSize = 50,
-    this.facebookIconSize = 50,
-    this.linkedinIconSize = 50,
-    this.githubIconSize = 34,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
           onTap: () async {
@@ -29,30 +22,13 @@ class MySocialMedia extends StatelessWidget {
               throw 'Could not launch $url';
             }
           },
-          child: Image(
-            image: const AssetImage('images/insta-logo.webp'),
-            width: instaIconSize,
-            height: instaIconSize,
+          child: const Icon(
+            FontAwesomeIcons.instagram,
+            color: Colors.white,
+            size: 20,
           ),
         ),
-        const SizedBox(width: 10),
-        InkWell(
-          onTap: () async {
-            const url = 'https://www.facebook.com/kuba.zawada.311';
-            if (await canLaunchUrl(Uri.parse(url))) {
-              await launchUrl(Uri.parse(url),
-                  mode: LaunchMode.externalApplication);
-            } else {
-              throw 'Could not launch $url';
-            }
-          },
-          child: Image(
-            image: const AssetImage('images/facebook_logo.png'),
-            width: facebookIconSize,
-            height: facebookIconSize,
-          ),
-        ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 20),
         InkWell(
           onTap: () async {
             const url = 'https://www.linkedin.com/in/jakub-zawada-5264181a5/';
@@ -63,13 +39,30 @@ class MySocialMedia extends StatelessWidget {
               throw 'Could not launch $url';
             }
           },
-          child: Image(
-            image: const AssetImage('images/linkedin-logo.webp'),
-            width: linkedinIconSize,
-            height: linkedinIconSize,
+          child: const Icon(
+            FontAwesomeIcons.linkedin,
+            color: Colors.white,
+            size: 20,
           ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 20),
+        InkWell(
+          onTap: () async {
+            const url = 'https://www.facebook.com/kuba.zawada.311';
+            if (await canLaunchUrl(Uri.parse(url))) {
+              await launchUrl(Uri.parse(url),
+                  mode: LaunchMode.externalApplication);
+            } else {
+              throw 'Could not launch $url';
+            }
+          },
+          child: const Icon(
+            FontAwesomeIcons.facebook,
+            color: Colors.white,
+            size: 20,
+          ),
+        ),
+        const SizedBox(width: 20),
         InkWell(
           onTap: () async {
             const url = 'https://github.com/jakubzawada';
@@ -80,13 +73,12 @@ class MySocialMedia extends StatelessWidget {
               throw 'Could not launch $url';
             }
           },
-          child: Image(
-            image: const AssetImage('images/git-logo.png'),
-            width: githubIconSize,
-            height: githubIconSize,
+          child: const Icon(
+            FontAwesomeIcons.github,
+            color: Colors.white,
+            size: 20,
           ),
         ),
-        const SizedBox(width: 10),
       ],
     );
   }

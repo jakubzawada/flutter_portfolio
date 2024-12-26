@@ -36,6 +36,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   url_launcher: ^6.3.0
+  emailjs: ^4.0.0
+  http: ^1.2.0
+  flutter_icons_fix: ^1.0.3
+  font_awesome_flutter: ^10.8.0
 
 dev_dependencies:
   flutter_test:

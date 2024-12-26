@@ -5,12 +5,16 @@ import 'package:flutter_portfolio/widgets/contact_me_info.dart';
 import 'package:flutter_portfolio/widgets/narrow_contact_me_hub.dart';
 import 'package:flutter_portfolio/widgets/narrow_my_project_info.dart';
 
-class NarrowHomePage extends StatelessWidget {
-  NarrowHomePage({
-    super.key,
-  });
+class NarrowHomePage extends StatefulWidget {
+  const NarrowHomePage({super.key});
 
+  @override
+  State<NarrowHomePage> createState() => _NarrowHomePageState();
+}
+
+class _NarrowHomePageState extends State<NarrowHomePage> {
   final GlobalKey myProjectsKey = GlobalKey();
+  final GlobalKey contactMeKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +35,29 @@ class NarrowHomePage extends StatelessWidget {
               child: const Icon(
                 Icons.menu,
               ),
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                final result = await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MenuPage(),
+                    builder: (context) => MenuPage(
+                      myProjectsKey: myProjectsKey,
+                      contactMeKey: contactMeKey,
+                    ),
                   ),
                 );
+                if (result == 'scrollToProjects') {
+                  Scrollable.ensureVisible(
+                    myProjectsKey.currentContext!,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                } else if (result == 'scrollToContact') {
+                  Scrollable.ensureVisible(
+                    contactMeKey.currentContext!,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                }
               },
             ),
           ],
@@ -75,13 +95,15 @@ class NarrowHomePage extends StatelessWidget {
               ),
             ),
             Padding(
+              key: myProjectsKey,
               padding: const EdgeInsets.only(left: 20, right: 20),
-              child: NarrowMyProjectsInfo(key: myProjectsKey),
+              child: const NarrowMyProjectsInfo(),
             ),
             const SizedBox(height: 40),
-            const Padding(
-              padding: EdgeInsets.only(left: 40, right: 40),
-              child: ContactMeInfo(),
+            Padding(
+              key: contactMeKey,
+              padding: const EdgeInsets.only(left: 40, right: 40),
+              child: const ContactMeInfo(),
             ),
             const SizedBox(height: 140),
             const NarrowContactMeHub(

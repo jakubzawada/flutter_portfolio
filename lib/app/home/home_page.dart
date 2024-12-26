@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return ResponsiveLayout(
       ultrawawide: UltraWideHomePage(),
       wide: WideHomePage(),
-      narrow: NarrowHomePage(),
+      narrow: const NarrowHomePage(),
     );
   }
 }

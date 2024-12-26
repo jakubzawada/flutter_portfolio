@@ -4,7 +4,14 @@ import 'package:flutter_portfolio/widgets/my_social_media.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+  final GlobalKey myProjectsKey;
+  final GlobalKey contactMeKey;
+
+  const MenuPage({
+    super.key,
+    required this.myProjectsKey,
+    required this.contactMeKey,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,24 +75,8 @@ class MenuPage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      ),
-                    );
+                    Navigator.pop(context, 'scrollToProjects');
                   },
-                ),
-                const SizedBox(height: 20),
-                InkWell(
-                  child: const Text(
-                    'about',
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.black54,
-                    ),
-                  ),
-                  onTap: () {},
                 ),
                 const SizedBox(height: 20),
                 InkWell(
@@ -96,7 +87,9 @@ class MenuPage extends StatelessWidget {
                       color: Colors.black54,
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context, 'scrollToContact');
+                  },
                 ),
                 const SizedBox(height: 40),
                 InkWell(

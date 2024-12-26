@@ -12,6 +12,7 @@ class WideHomePage extends StatelessWidget {
 
   final ScrollController scrollController = ScrollController();
   final GlobalKey wideProjectsKey = GlobalKey();
+  final GlobalKey contactMeInfoKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +64,10 @@ class WideHomePage extends StatelessWidget {
                   child: const MyProjectsInfo(),
                 ),
                 const SizedBox(height: 40),
-                const Padding(
-                  padding: EdgeInsets.only(left: 160, right: 180),
-                  child: ContactMeInfo(),
+                Padding(
+                  key: contactMeInfoKey,
+                  padding: const EdgeInsets.only(left: 160, right: 180),
+                  child: const ContactMeInfo(),
                 ),
                 const SizedBox(height: 140),
                 const ContactMeHub(
@@ -87,6 +89,13 @@ class WideHomePage extends StatelessWidget {
             onMyProjectsPressed: () {
               Scrollable.ensureVisible(
                 wideProjectsKey.currentContext!,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            onContactPressed: () {
+              Scrollable.ensureVisible(
+                contactMeInfoKey.currentContext!,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );

@@ -4,11 +4,13 @@ import 'package:url_launcher/url_launcher.dart';
 class TopNavBar extends StatelessWidget {
   final VoidCallback onHomePressed;
   final VoidCallback onMyProjectsPressed;
+  final VoidCallback onContactPressed;
 
   const TopNavBar({
     super.key,
     required this.onHomePressed,
     required this.onMyProjectsPressed,
+    required this.onContactPressed,
   });
 
   @override
@@ -49,15 +51,7 @@ class TopNavBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'About',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                TextButton(
-                  onPressed: () {},
+                  onPressed: onContactPressed,
                   child: const Text(
                     'Contact',
                     style: TextStyle(color: Colors.black),

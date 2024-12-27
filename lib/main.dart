@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/app/home/home_page.dart';
-import 'package:emailjs/emailjs.dart' as emailjs; // Importujemy EmailJS
 
 void main() {
-  // Inicjalizacja EmailJS z publicznym i prywatnym kluczem
-  emailjs.init(const emailjs.Options(
-    publicKey: 'YOUR_PUBLIC_KEY', // Zastąp tym swoim publicznym kluczem
-    privateKey: 'YOUR_PRIVATE_KEY', // Zastąp tym swoim prywatnym kluczem
-  ));
-
   runApp(const MyApp());
 }
 

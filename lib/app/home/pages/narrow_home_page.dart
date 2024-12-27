@@ -87,7 +87,7 @@ class _NarrowHomePageState extends State<NarrowHomePage> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.only(top: 40, left: 80),
+              padding: EdgeInsets.only(top: 40, left: 100),
               child: Image(
                 image: AssetImage('images/ThisIsYourTraining.png'),
                 width: 300,

@@ -7,7 +7,7 @@ class NarrowMyProjectsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 50),
+      padding: EdgeInsets.only(top: 60),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -15,7 +15,7 @@ class NarrowMyProjectsInfo extends StatelessWidget {
             'My Projects',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
           ),
-          SizedBox(height: 80),
+          SizedBox(height: 40),
           NarrowProjectContainer(
             title: 'DropCheck',
             image: 'images/dropcheck.png',

@@ -3,10 +3,12 @@ import 'package:flutter_portfolio/widgets/my_social_media.dart';
 
 class AboutMeInfo extends StatefulWidget {
   final VoidCallback onSeeMyWorksPressed;
+  final double titleFontSize;
 
   const AboutMeInfo({
     super.key,
     required this.onSeeMyWorksPressed,
+    this.titleFontSize = 60,
   });
 
   @override
@@ -55,9 +57,12 @@ class AboutMeInfoState extends State<AboutMeInfo>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Flutter Developer',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: widget.titleFontSize,
+              ),
             ),
             const SizedBox(height: 20),
             const Text(

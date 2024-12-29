@@ -82,21 +82,27 @@ class _NarrowHomePageState extends State<NarrowHomePage> {
                         curve: Curves.easeInOut,
                       );
                     },
+                    titleFontSize: 40,
                   ),
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 40, left: 100),
-              child: Image(
-                image: AssetImage('images/ThisIsYourTraining.png'),
-                width: 300,
-                height: 300,
-              ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 40),
+                  child: Image(
+                    image: AssetImage('images/ThisIsYourTraining.png'),
+                    width: 300,
+                    height: 300,
+                  ),
+                ),
+              ],
             ),
             Padding(
               key: myProjectsKey,
-              padding: const EdgeInsets.only(left: 20, right: 20),
+              padding: const EdgeInsets.only(left: 40, right: 40),
               child: const NarrowMyProjectsInfo(),
             ),
             const SizedBox(height: 40),
